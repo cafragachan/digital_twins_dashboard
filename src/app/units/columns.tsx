@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 export const columns: ColumnDef<Unit>[] = [
     {
         header: "ID",
-        accessorKey: "name"
+        accessorKey: "tag"
     },
     {
         header: "Level",
@@ -27,6 +27,10 @@ export const columns: ColumnDef<Unit>[] = [
     {
         header: "Price",
         accessorKey: "price"
+    },
+    {
+        header: "Room",
+        accessorKey: "room_type"
     },
     {
         header: "Description",

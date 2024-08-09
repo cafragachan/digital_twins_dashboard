@@ -28,8 +28,9 @@ export type Unit = {
     buildingID: number;
     level: number;
     phase: number;
-    name: string;
+    tag: string;
     description: string;
     price: number;
+    room_type: string;
     is_available: boolean;
 }

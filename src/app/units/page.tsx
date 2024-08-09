@@ -48,7 +48,7 @@ const Units = (props: Props) => {
     update(unitRef, { price: newPrice }).then(() => {
       console.log(`Updated price for unit ID: ${id} to ${newPrice}`);
     }).catch((error) => {
-      console.error("Error updating level:", error);
+      console.error("Error updating price:", error);
     });
   };
 
@@ -67,6 +67,36 @@ const Units = (props: Props) => {
     });
   };
 
+  const handleRoomTypeChange = (id: number, roomType: string) => {
+    // Update the state
+    setUnits(prevUnits => prevUnits.map(unit => 
+      unit.id === id ? { ...unit, room_type: roomType } : unit
+    ));
+
+    // Update Firebase
+    const unitRef = ref(database, `accounts/stelling_properties/projects/12Hst_Southampton/units/${id}`);
+    update(unitRef, { room_type: roomType }).then(() => {
+      console.log(`Updated room type for unit ID: ${id} to ${roomType}`);
+    }).catch((error) => {
+      console.error("Error updating room type:", error);
+    });
+  };
+
+  const handleDescriptionChange = (id: number, description_: string) => {
+    // Update the state
+    setUnits(prevUnits => prevUnits.map(unit => 
+      unit.id === id ? { ...unit, description: description_ } : unit
+    ));
+
+    // Update Firebase
+    const unitRef = ref(database, `accounts/stelling_properties/projects/12Hst_Southampton/units/${id}`);
+    update(unitRef, { description: description_ }).then(() => {
+      console.log(`Updated description for unit ID: ${id} to ${description_}`);
+    }).catch((error) => {
+      console.error("Error updating description:", error);
+    });
+  };
+
   return (
     <div className="container py-10 mx-auto">
       <UnitsDataTable
@@ -74,6 +104,8 @@ const Units = (props: Props) => {
         data={units}
         onPriceChange={handlePriceChange}
         onAvailabilityChange={handleAvailabilityChange}
+        onRoomTypeChange={handleRoomTypeChange}
+        onDescriptionChange={handleDescriptionChange}
       />
     </div>
   );
