@@ -11,7 +11,7 @@ export const columns: ColumnDef<Unit>[] = [
         accessorKey: "level"
     },
     {
-        header: "Room Type",
+        header: "Unit Type",
         accessorKey: "type"
     },
     {
@@ -29,8 +29,8 @@ export const columns: ColumnDef<Unit>[] = [
         accessorKey: "price"
     },
     {
-        header: "Room",
-        accessorKey: "room_type"
+        header: "Name",
+        accessorKey: "name"
     },
     {
         header: "Description",

@@ -85,7 +85,7 @@ export function UnitsDataTable<TData, TValue>({
                         checked={cell.getValue() as boolean}
                         onChange={(e) => onAvailabilityChange((row.original as Unit).id, e.target.checked)}
                       />
-                    ) : cell.column.id === 'room_type' ? (
+                    ) : cell.column.id === 'name' ? (
                       <input
                         type="text"
                         value={cell.getValue() as string}

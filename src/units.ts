@@ -31,6 +31,6 @@ export type Unit = {
     tag: string;
     description: string;
     price: number;
-    room_type: string;
+    name: string;
     is_available: boolean;
 }

@@ -22,7 +22,7 @@ const Units = (props: Props) => {
         let data = snapshot.val() as Unit[];
         
         // Filter out units with type not in the specified list
-        const validTypes = ['sp_t2', 'sp_t4', 'sp_t6', 'sp_invalid'];
+        const validTypes = ['sp_t2', 'sp_t4', 'sp_t6', 'sp_t1', 'sp_twodio'];
         data = data.filter(unit => validTypes.includes(unit.type));
 
         setUnits(data);
@@ -67,16 +67,16 @@ const Units = (props: Props) => {
     });
   };
 
-  const handleRoomTypeChange = (id: number, roomType: string) => {
+  const handleRoomTypeChange = (id: number, Name: string) => {
     // Update the state
     setUnits(prevUnits => prevUnits.map(unit => 
-      unit.id === id ? { ...unit, room_type: roomType } : unit
+      unit.id === id ? { ...unit, name: Name } : unit
     ));
 
     // Update Firebase
     const unitRef = ref(database, `accounts/stelling_properties/projects/12Hst_Southampton/units/${id}`);
-    update(unitRef, { room_type: roomType }).then(() => {
-      console.log(`Updated room type for unit ID: ${id} to ${roomType}`);
+    update(unitRef, { name: Name }).then(() => {
+      console.log(`Updated room type for unit ID: ${id} to ${Name}`);
     }).catch((error) => {
       console.error("Error updating room type:", error);
     });
